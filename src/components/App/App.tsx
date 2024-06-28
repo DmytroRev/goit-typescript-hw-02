@@ -7,15 +7,16 @@ import { Loader } from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import { LoadMoreBtn } from "../LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "../ImageModal/ImageModal";
+import { ImageDate } from "../../types";
 
 export default function App() {
-  const [images, setImages] = useState([]);
-  const [loader, setLoader] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [searchImg, setSearchImg] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectImage, setSelectImage] = useState(null);
+  const [images, setImages] = useState<ImageDate[]>([]);
+  const [loader, setLoader] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [searchImg, setSearchImg] = useState<string>("");
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectImage, setSelectImage] = useState<null | string>(null);
 
   useEffect(() => {
     if (!searchImg) return;
@@ -37,7 +38,7 @@ export default function App() {
     fetchImages();
   }, [searchImg, currentPage]);
 
-  const handleFormSubmit = (value) => {
+  const handleFormSubmit = (value: string) => {
     setSearchImg(value);
     setCurrentPage(1);
   };
@@ -46,7 +47,7 @@ export default function App() {
     setCurrentPage((prevImages) => prevImages + 1);
   };
 
-  const openModal = (image) => {
+  const openModal = (image: string) => {
     setSelectImage(image);
     setIsModalOpen(true);
   };

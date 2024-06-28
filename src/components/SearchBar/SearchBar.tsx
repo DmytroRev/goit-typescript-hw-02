@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import toast from "react-hot-toast";
 import css from "./SearchBar.module.css";
 
-export const SearchBar = ({ onSubmit }) => {
+interface SearchBarProps {
+  onSubmit: (value: string) =>void
+}
+
+export const SearchBar: FC<SearchBarProps> = ({ onSubmit }) => {
   const [searchImage, setSearchImage] = useState("");
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchImage(event.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (searchImage.trim() === "") {
       toast.error("Type something:)");
