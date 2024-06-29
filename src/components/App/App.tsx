@@ -24,7 +24,7 @@ export default function App() {
       try {
         setLoader(true);
         setIsError(false);
-        const data = await getImages(searchImg, currentPage);
+        const data = await getImages({ topic: searchImg, currentPage });
         setImages((prevImages) =>
           currentPage === 1 ? data : [...prevImages, ...data]
         );
