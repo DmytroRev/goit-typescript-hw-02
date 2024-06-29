@@ -4,6 +4,7 @@ import { FaInstagram } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
 import { FcLike } from "react-icons/fc";
 import css from "./ImageModal.module.css";
+import { ImageDate } from "../../types";
 
 const customStyles = {
   content: {
@@ -24,7 +25,16 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-export default function ImageModal({ isOpen, onClose, image }) {
+interface ImageModalProps {
+  image: ImageDate | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, image }) => {
+   if (!isOpen || !image) {
+    return null;
+  }
   return (
     <div>
       <Modal
@@ -73,3 +83,5 @@ export default function ImageModal({ isOpen, onClose, image }) {
     </div>
   );
 }
+
+export default ImageModal

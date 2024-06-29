@@ -6,7 +6,7 @@ import { ImageDate } from "../../types";
 
 interface ImageGalleryProps {
   images: ImageDate[];
-  onImageClick: (image: string) => void
+  onImageClick: (image: ImageDate) => void
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onImageClick }) => {

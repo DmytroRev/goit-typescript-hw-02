@@ -16,7 +16,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [searchImg, setSearchImg] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [selectImage, setSelectImage] = useState<null | string>(null);
+  const [selectImage, setSelectImage] = useState<ImageDate | null>(null);
 
   useEffect(() => {
     if (!searchImg) return;
@@ -47,7 +47,7 @@ export default function App() {
     setCurrentPage((prevImages) => prevImages + 1);
   };
 
-  const openModal = (image: string) => {
+  const openModal = (image: ImageDate) => {
     setSelectImage(image);
     setIsModalOpen(true);
   };

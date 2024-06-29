@@ -1,6 +1,7 @@
+import React from "react";
 import { MagnifyingGlass } from "react-loader-spinner";
 
-export const Loader = () => {
+export const Loader: React.FC = () => {
     return (
       <MagnifyingGlass
         visible={true}
